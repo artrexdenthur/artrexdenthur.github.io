@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "November 27: Combination Operators"
+title:      "Combination Operators"
 date:       2018-11-27 23:25:25 +0000
 permalink:  november_27_combination_operators
 ---

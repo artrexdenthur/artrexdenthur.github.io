@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "Scraping: Doing the Data Dance "
+title:      "Scraping: Doing the Data Dance"
 date:       2018-12-17 00:44:36 +0000
 permalink:  scraping_doing_the_data_dance
 ---
@@ -8,7 +8,7 @@ permalink:  scraping_doing_the_data_dance
 
 
 While a simple scrape of a small site is rather trivial in the grand scheme of things, the social aspect of scraping makes it a particularly interesting field of programming to dive deep into. In particular, bigger sites that take themselves and their data very seriously will often resist scraping attempts. In many cases this is understandable, as bad actors can be looking for destructive tools (e.g. price and inventory data to sell to a competitor), or for carefully created content to be copied *en masse* and re-posted for profit in another corner of the internet.
-Sites therefore may take steps to block a scraping effort. 
+Sites therefore may take steps to block a scraping effort.
 
 ## Social Tips
 
@@ -30,8 +30,8 @@ There exists a category of sites with a middling level of security that resist s
 ## Coding Tips
 
 ### Make the Scraper Act More Like a Human
-Many anti-scraping algorithms rely on rule-of-thumb concepts to determine whether a request is coming from a scraper or a human. If we decide to lean more towards the 'dark side,' we can have our scraper mimic human behavior rather than making itself known as a friendly scraper. This particularly involves timing concerns, as humans will basically never talk to a website with the rapidity which a basic scraper will attempt by default. 
-The most basic concern here would be to chain requests rather than giving concurrent requests. Even for friendly sites, too many concurrent requests may, quite reasonably, trigger DoS detectors. 
+Many anti-scraping algorithms rely on rule-of-thumb concepts to determine whether a request is coming from a scraper or a human. If we decide to lean more towards the 'dark side,' we can have our scraper mimic human behavior rather than making itself known as a friendly scraper. This particularly involves timing concerns, as humans will basically never talk to a website with the rapidity which a basic scraper will attempt by default.
+The most basic concern here would be to chain requests rather than giving concurrent requests. Even for friendly sites, too many concurrent requests may, quite reasonably, trigger DoS detectors.
 More subtly, some sites will even treat as suspicious requests that, even if not concurrent, occur too quickly for a human user to have moved their mouse from one button to the other. Fancier sites will even use machine learning algorithms to determine a threshold for each possible sequence of two commands. The appropriately named "The Bastard's Book of Ruby" gives [a simple example](http://ruby.bastardsbook.com/chapters/web-crawling/) of such timing modifications which involves a `sleep 1.0 + rand` command between every request. This will, of course, add a relatively huge amount of time to the process but will be far less likely to trigger a scraper detection algorithm.
 
 
