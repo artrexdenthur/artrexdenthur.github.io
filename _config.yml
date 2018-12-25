@@ -1,11 +1,11 @@
 # Site settings
 author: Paul Ashour
-title: 
+title: Juggling Lightning
 header-img: img/home-bg.png
 email: paul.ashour@gmail.com
 copyright_name: Paul Ashour
 description: > # this means to ignore newlines until "baseurl:"
-  
+  One person's attempt to comprehend what one person cannot comprehend
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  artrexdenthur
