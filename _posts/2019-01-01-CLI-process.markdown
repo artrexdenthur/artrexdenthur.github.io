@@ -1,7 +1,7 @@
 ---
 layout: post
-title:      "Code to Joy"
-date:       2018-11-06 15:14:52 +0000
+title:      "Cutting a Gem"
+date:       2019-01-07 15:14:52 +0000
 permalink:  code_to_joy
 ---
 
