@@ -22,7 +22,7 @@ Nevertheless, the functions that do exist work as I desired, and the [table gene
 # Doing the Work
 
 The process of this project involved various quantum steps in which a needed element of gem creation suddenly made sense (thanks usually to great documentation or explanations/help from instructors). When an element clicked into place like this, the next few steps fell into place almost by gravity.
-From design to end, I remember the process looking like this:
+From design to end, I remember the process looking like this:\n
 1) Setting up the gem basics and the github repo
   Working with the gem creation process was certainly the most novel-feeling aspect of this project. Certainly it's the case that I still don't understand it fully, and will need to create more gems as I go. This particular project still relies on many gem creation defaults (e.g., there's no reason to change the laconic but correct description of this gem's install process), but I believe I understand the changes I did make.
 2) Deciding on a data structure design
