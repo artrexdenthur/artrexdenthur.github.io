@@ -2,7 +2,7 @@
 layout: post
 title:      "Cutting a Gem"
 date:       2019-01-07 15:14:52 +0000
-permalink:  code_to_joy
+permalink:  cutting_a_gem
 ---
 
 *The Process for my Ruby CLI Project*
