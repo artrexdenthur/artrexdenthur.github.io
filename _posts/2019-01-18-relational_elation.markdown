@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Relational Elation"
-date:       2019-01-19 01:00:45 +0000
+date:       2019-01-18 20:00:46 -0500
 permalink:  relational_elation
 ---
 
