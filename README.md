@@ -1,3 +1,9 @@
+# Juggling Lightning at [artrexdenthur.github.io ]
+## A Jekyll-powered blog by Paul Ashour 
+
+Thanks to [Flatiron Co](learn.co) for the basic blog setup!
+Readme for the template, "Clean Blog", follows
+
 #Clean Blog by Start Bootstrap - Jekyll Version
 
 The official Jekyll version of the Clean Blog theme by [Start Bootstrap](http://startbootstrap.com/).
