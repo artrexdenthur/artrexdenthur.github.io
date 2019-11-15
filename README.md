@@ -1,4 +1,4 @@
-# Juggling Lightning at [artrexdenthur.github.io ]
+# Juggling Lightning at artrexdenthur.github.io
 ## A Jekyll-powered blog by Paul Ashour 
 
 Thanks to [Flatiron Co](learn.co) for the basic blog setup!
