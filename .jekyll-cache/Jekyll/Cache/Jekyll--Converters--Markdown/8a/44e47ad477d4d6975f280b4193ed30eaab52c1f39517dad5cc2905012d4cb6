@@ -1,0 +1,3 @@
+I"…<p>While a simple scrape of a small site is rather trivial in the grand scheme of things, the social aspect of scraping makes it a particularly interesting field of programming to dive deep into. In particular, bigger sites that take themselves and their data very seriously will often resist scraping attempts. In many cases this is understandable, as bad actors can be looking for destructive tools (e.g. price and inventory data to sell to a competitor), or for carefully created content to be copied <em>en masse</em> and re-posted for profit in another corner of the internet.
+Sites therefore may take steps to block a scraping effort.</p>
+:ET

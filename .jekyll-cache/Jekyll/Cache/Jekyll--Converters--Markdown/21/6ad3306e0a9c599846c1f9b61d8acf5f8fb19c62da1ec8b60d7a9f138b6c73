@@ -1,0 +1,56 @@
+I"\<h2 id="in-which-i-learn-about-everyones-favorite-anagram-for-correctedvia-activerecord">In which I learn about everyone’s favorite anagram for CorrectedVia, ActiveRecord!</h2>
+
+<p>Having quickly been introduced to SQL, we’ve moved on to the use of SQL side-by-side with Ruby in the creation of ORMs.</p>
+
+<p>ORM (Object Relational Mapping) is a technique that allows for interface between type systems (usually a database’s type system and a programming language’s type system) by abstracting one of the type systems with objects. For example, one can take a simple database table like this:</p>
+
+<p><img src="https://i.imgur.com/8yw5kz1.png" alt="Songs database example" /></p>
+
+<p>And convert it to objects within (for example) Ruby with code like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">InteractiveRecord</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{})</span>
+    <span class="n">options</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span>
+      <span class="nb">self</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">="</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="nb">self</span>
+  <span class="k">end</span>  
+  
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">column_names</span>
+    <span class="no">DB</span><span class="p">[</span><span class="ss">:conn</span><span class="p">].</span><span class="nf">results_as_hash</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="s2">"PRAGMA table_info('</span><span class="si">#{</span><span class="n">table_name</span><span class="si">}</span><span class="s2">')"</span>
+    <span class="n">table_data</span> <span class="o">=</span> <span class="no">DB</span><span class="p">[</span><span class="ss">:conn</span><span class="p">].</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+    <span class="c1"># binding.pry</span>
+    <span class="n">table_data</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">col</span><span class="o">|</span> <span class="n">col</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="p">}</span>
+  <span class="k">end</span>
+	
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">table_name</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">pluralize</span>
+  <span class="k">end</span>
+	<span class="o">...</span>
+	<span class="sb">```
+	
+This is the start of an inheritable class that provides ORM features to its children. A child of this class can immediately pull data from a connected database table that share its name but pluralized (that is, `</span><span class="k">class</span> <span class="nc">Song</span> <span class="o">&lt;</span> <span class="no">InteractiveRecord</span><span class="sb">` can access data in a `</span><span class="n">songs</span><span class="sb">` table from a connected database). You can see the start of this in the column_names method which converts sql results into ruby data formats. Later methods convert this retrieved data to data stored in instances of the child InteractiveRecord class.
+	
+Once this is all set up, it is an incredibly useful way to manipulate the data which a database methodically stores with a scripting language like Ruby, which is much more fluid than SQL. Tedious SQL statements like 
+```</span> <span class="n">sql</span>
+<span class="no">SELECT</span> <span class="o">*</span> <span class="no">FROM</span> <span class="n">songs</span> <span class="no">INNER</span> <span class="no">JOIN</span> <span class="n">artists</span> <span class="no">ON</span> <span class="n">artists</span><span class="p">.</span><span class="nf">id</span> <span class="o">=</span> <span class="n">songs</span><span class="p">.</span><span class="nf">artist_id</span> <span class="no">WHERE</span> <span class="n">artist</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s2">"Paul McCartney"</span>
+</code></pre></div></div>
+<p>can be reduced to something closer to</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">paulM</span> <span class="o">=</span> <span class="no">Artist</span><span class="p">.</span><span class="nf">find_by</span><span class="p">({</span><span class="ss">name: </span><span class="s2">"Paul McCartney"</span><span class="p">})</span>
+<span class="nb">puts</span> <span class="n">paulM</span><span class="p">.</span><span class="nf">songs</span>
+</code></pre></div></div>
+<p>Since an ORM will theoretically model joins as well, giving each subclass methods to self-assign relationships with other subclasses. This is much easier to read than the equivalent SQL and results in data structures which can be worked with programmatically.</p>
+
+<p>But the amount of work involved in setting up such a system is significant, enough to steer one towards ad-hoc, one-time-use database queries in smaller projects.</p>
+
+<p>Enter ActiveRecord, a <a href="https://api.rubyonrails.org/">Ruby on Rails</a> library which provides all this ORM functionality. Not only does it connect classes automatically in just the same way as described above:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Song</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">[</span><span class="mf">5.1</span><span class="p">]</span> <span class="c1"># Song knows how to read from table song of connected database</span>
+</code></pre></div></div>
+<p>but it also provides interfacing to the database in question:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span><span class="p">({</span><span class="ss">adapter: </span><span class="s1">'sqlite3'</span><span class="p">,</span> <span class="ss">database: </span><span class="s1">'db/songs.db'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>Furthermore, it can even keep track of and perform migrations to the database as it evolves. It’s nice to know that its basic functions can be reproduced, but the ease that ActiveRecord provides in working with databases is astounding and highly useful. I’m excited to continue working with it in the future.</p>
+:ET

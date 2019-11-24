@@ -1,0 +1,30 @@
+I"�
+<h2 id="or-a-look-at-corneal-for-sinatra">Or, a look at Corneal for Sinatra</h2>
+
+<p>The Flatiron Learn Web-Dev curriculum’s second module poses us, the students, with the challenge of creating a webapp that allows users CRUD powers (create, read, update, destroy) over some input of their own. This app is to be created in a Ruby DSL (Domain Specific Language) called, of all things, “Sinatra”</p>
+
+<p><img src="https://media3.giphy.com/media/B8NSo2tYq4SRi/giphy.gif?cid=3640f6095c6ddb92746d5a482e5eacca" alt="Frank Sinatra Face GIF" width="200" /></p>
+
+<p>Sinatra purports to grant the ability to “[create] web applications in Ruby with minimal effort”, displaying on <a href="http://sinatrarb.com/">its home page</a> a code snippet which, theoretically, composes a (tiny) website in and of itself:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'sinatra'
+    get '/frank-says' do
+      'Put this in your pipe &amp; smoke it!'
+    end
+</code></pre></div></div>
+
+<p>And it’s true, <code class="highlighter-rouge">ruby sinatra_app_name.rb</code> will let you look at one line of HTML on your localhost.</p>
+
+<p>But as we’ve learned recently in the course, there is quite a bit of busywork involved in setting up a small, standard site. There’s a config.ru file to be thought of for setting up <a href="https://rack.github.io/">Rack</a>,  <a href="https://github.com/rtomayko/shotgun">Shotgun</a> or <a href="https://github.com/alexch/rerun">Rerun</a> to run the app with. There’s the whole model, view, controller system that a non-static website relies on, requiring sane directory structure and files for each. And there’s the spec for doing test-driven coding. It’s not exactly a mountain, but it is a pretty standard laundry list of code that, between projects, is not particularly DRY.</p>
+
+<p>Enter the magic of <a href="https://thebrianemory.github.io/corneal/">Corneal</a>. Just as Bundler can spit out a mostly-ready template for an offline gem file, so Corneal preps a Sinatra CRUD app with a simple:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>corneal new APP-NAME
+</code></pre></div></div>
+<p>APP-NAME appears in the current directory, complete with gemfile, rakefile, config.ru, MVC folders, and even a basic spec. What more could you want?</p>
+
+<p>But wait, there’s more! Enter:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>corneal scaffold MODEL-NAME
+</code></pre></div></div>
+<p>And the desired model gains an empty class file <em>and</em> relevant views <em>and</em> relevant controller functions!
+Needless to say, this is an incredible tool for quickly creating a bunch of small web apps within Sinatra. What better way to fail fast?</p>
+
+:ET

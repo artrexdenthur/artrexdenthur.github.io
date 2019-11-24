@@ -1,0 +1,43 @@
+I"�<p>While a simple scrape of a small site is rather trivial in the grand scheme of things, the social aspect of scraping makes it a particularly interesting field of programming to dive deep into. In particular, bigger sites that take themselves and their data very seriously will often resist scraping attempts. In many cases this is understandable, as bad actors can be looking for destructive tools (e.g. price and inventory data to sell to a competitor), or for carefully created content to be copied <em>en masse</em> and re-posted for profit in another corner of the internet.
+Sites therefore may take steps to block a scraping effort.</p>
+
+<h2 id="social-tips">Social Tips</h2>
+
+<h3 id="pick-friendly-sites-if-possible">Pick Friendly Sites, if Possible</h3>
+<p>The most straightforward way to avoid being blocked while scraping is to pick sites that are happy to be scraped. We can determine this in advance in various ways, particularly by accessing the ‘robots.txt’ of the site.</p>
+
+<h3 id="dont-be-a-stranger">Don’t Be a Stranger</h3>
+<p>There exists a category of sites with a middling level of security that resist scraping primarily by anonymous agents. They will, however, accept identified scrapers, and so we can access these by using an appropriate header in our requests. Even for the vast majority of sites that won’t automatically disqualify us here, putting some genuine identification and contact info will allow a curious or concerned webmaster to work with us rather than having only a binary block/ignore option. This can be easily done in Ruby with open-uri (from the <a href="https://ruby-doc.com/stdlib/libdoc/open-uri/rdoc/OpenURI.html">documentation</a>):<br /></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  open("http://www.ruby-lang.org/en/"  
+    "User-Agent" =&gt; "Ruby/#{RUBY_VERSION}"  
+    "From" =&gt; "foo@bar.invalid"  
+    "Referer" =&gt; "http://www.ruby-lang.org/") {|f|  
+    /# ...
+    }
+	)
+</code></pre></div></div>
+
+<h2 id="coding-tips">Coding Tips</h2>
+
+<h3 id="make-the-scraper-act-more-like-a-human">Make the Scraper Act More Like a Human</h3>
+<p>Many anti-scraping algorithms rely on rule-of-thumb concepts to determine whether a request is coming from a scraper or a human. If we decide to lean more towards the ‘dark side,’ we can have our scraper mimic human behavior rather than making itself known as a friendly scraper. This particularly involves timing concerns, as humans will basically never talk to a website with the rapidity which a basic scraper will attempt by default.
+The most basic concern here would be to chain requests rather than giving concurrent requests. Even for friendly sites, too many concurrent requests may, quite reasonably, trigger DoS detectors.
+More subtly, some sites will even treat as suspicious requests that, even if not concurrent, occur too quickly for a human user to have moved their mouse from one button to the other. Fancier sites will even use machine learning algorithms to determine a threshold for each possible sequence of two commands. The appropriately named “The Bastard’s Book of Ruby” gives <a href="http://ruby.bastardsbook.com/chapters/web-crawling/">a simple example</a> of such timing modifications which involves a <code class="highlighter-rouge">sleep 1.0 + rand</code> command between every request. This will, of course, add a relatively huge amount of time to the process but will be far less likely to trigger a scraper detection algorithm.</p>
+
+<h3 id="cache">Cache</h3>
+<p>Caching is a great tool to counteract the time-consuming process of spoofing humanity. If a copy of the needed information can be saved and only occasionally refreshed then much time can be saved while analyzing the data. Nokogiri does not have this ability by default, but there does exist <a href="http://https://rubygems.org/gems/nokogiri-cache/versions/1.0.0">a Rails gem</a> for this purpose.</p>
+
+<h3 id="separate-the-scraper-from-the-frontend">Separate the Scraper from the Frontend</h3>
+<p>Finally, a scraper designed to provide a robust set of data, especially for multiple tasks, should be separated from those tasks. All the scraper should do is find data and pass it on the programs that need it. That way, <em>when</em> the website(s) in question change their architecture and the scraper breaks, whatever processes that depend on the scraper won’t need to be dug into or modified. The scraper will simply need to be retooled to produce the same result from the new context.</p>
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li>https://medium.com/@dwernychukjosh/tips-and-tricks-for-web-scraping-2e06d00fbeb3</li>
+  <li>https://www.scrapehero.com/web-scraping-tutorials/scraping-tips/</li>
+  <li>http://tonylukasavage.com/blog/2012/03/01/the-joys-of-screen-scraping/</li>
+  <li>https://medium.com/@meenakshi052003/top-8-tips-for-web-scraping-in-python-f07cd3229c26</li>
+  <li>http://ruby.bastardsbook.com/chapters/web-crawling/</li>
+  <li>https://blog.hartleybrody.com/web-scraping-cheat-sheet/</li>
+</ul>
+:ET
