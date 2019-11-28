@@ -7,6 +7,7 @@ draft: true
 ---
 
 [//]: <> (Don't forget to undraft this!)
+[//]: <> (Check bottom for merge)
 
 The very basics of really being on the internet
 
@@ -23,3 +24,5 @@ If you're here, you've probably seen the illustrations of computers connected to
 
 The Domain Name System, or DNS, is the set of standards and protocols for allowing people and programs to find things on the internet. Most relatably to people, it's the system that allows you to type in www.google.com and just wait for the various routers acting as middlemen to figure out that you want the server labeled 172.217.9.36, find the best path between you and that server, and start relaying packets back and forth.
 
+\
+[//]: <> (Don't forget to undraft this!)
