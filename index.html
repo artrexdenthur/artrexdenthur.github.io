@@ -2,6 +2,10 @@
 layout: page
 ---
 
+<div class="body-main">
+    Welcome to my portfolio site! See my blog posts below, or <a href="/about/">click here</a> to learn more about me!
+</div>
+<hr>
 {% for post in paginator.posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
