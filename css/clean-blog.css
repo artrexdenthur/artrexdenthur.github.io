@@ -8,7 +8,13 @@ body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
   color: #404040;
+
+/* Background pattern from https://www.toptal.com/designers/subtlepatterns */
+
+  background-image: url("../img/what-the-hex.png");
+  background-repeat: repeat;
 }
+
 p {
   line-height: 1.5;
   margin: 30px 0;
@@ -45,11 +51,14 @@ blockquote {
   color: #808080;
   font-style: italic;
 }
+hr {
+  border-top: 1px solid black;
+}
 hr.small {
   max-width: 100px;
   margin: 15px auto;
   border-width: 4px;
-  border-color: white;
+  border-color: black;
 }
 hover,
   .navbar-custom .navbar-brand:focus {
@@ -63,7 +72,7 @@ hover,
   .navbar-custom .nav li a:focus {
     color: grey;
   }
-}
+
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
     -webkit-transition: background-color 0.3s;
@@ -128,14 +137,14 @@ hover,
 .intro-header .post-heading,
 .intro-header .page-heading {
   padding: 100px 0 50px;
-  color: rgb(136, 42, 160);
-  text-shadow: 2px 2px 5px black;
+  color: black;
+  /* text-shadow: 2px 2px 5px black; */
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 150px 0;
+    padding: 10px 0;
   }
 }
 .intro-header .site-heading,
@@ -144,7 +153,7 @@ hover,
 }
 .intro-header .site-heading h1,
 .intro-header .page-heading h1 {
-  margin-top: 0;
+  margin-top: 50px;
   font-size: 50px;
 }
 .intro-header .site-heading .subheading,
