@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Ruby on Rails Basics"
-date:       
+date:      2020-01-05 18:58:28 +00:00 
 permalink: ruby_on_rails_intro
 ---
 
