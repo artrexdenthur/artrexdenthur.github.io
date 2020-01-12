@@ -1,0 +1,37 @@
+I"�<p>The second part of an intro into my server-side web development framework of choice</p>
+
+<h2 id="why-ruby-on-rails">Why Ruby on Rails?</h2>
+
+<p>In my <a href="ruby_on_rails_intro_part_one">previous entry</a> I talked about the bare definitions of the Ruby on Rails framework. Here I’ll go into detail on the features that set it apart and the reasons you may or may not wish to use it.</p>
+
+<h3 id="ease-of-use">Ease of Use</h3>
+
+<p>One of Ruby on Rails’ biggest draws is the fact that it enables developers to quickly get professional quality websites up and running with ease. The <code class="highlighter-rouge">scaffold</code> tool in particular can generate essentially a whole site with a simple command, though of course it won’t suit most purposes. Still, scaffolding does showcase the patterns that Rails is built around, and Rails’ other generation tools give flexibility in auto-generating code.
+The flip side of this benefit of using Rails is that this ease of use is based on the framework being highly opinionated about the architecture of a website. While of course every default can be changed, developers looking to build a highly customized website may wish to look for a more options-first framework.
+One of the primary design choices of the framework is “Convention over Configuration”</p>
+
+<h3 id="expandability">Expandability</h3>
+
+<p>Just by being written in Ruby, Rails inherits a library of code in the form of Ruby gems, which is a repository that occupies somewhat of a “sweet spot” in terms of variety. Node.js is of course king for absolute number of options, but the medium-sized library that Rubygems represents is better</p>
+
+<h3 id="reliability">Reliability</h3>
+
+<h3 id="ruby">Ruby</h3>
+
+<p>Naturally, one benefits from developing in a familiar language. In a smaller development team, if most of the developers are most familiar with Ruby it is likely that Ruby on Rails will be one of their best options, given that there are no other Ruby web frameworks with even close to the same amount of support. Sinatra may be an option, but only for the smallest of projects, since it is designed to be lightweight and provide only the bare minimum of features.</p>
+
+<h2 id="other-options">Other Options</h2>
+
+<p>So, what if the cons outweight the pros? A few options are scattered through the above discussion, but here is an organized list highlighting some of the major alternatives.</p>
+
+<h3 id="sinatra">Sinatra</h3>
+
+<p><img src="http://woodiwiss.me/content/images/2016/07/sinatra.jpg =100x20" alt="" /></p>
+
+<p>If you have a project that you want to be highly self-configured, and especially if it happens to be (or needs to be) quite small, <a href="Sinatra">https://www.sinatrarb.com/</a> might be a good one to check out. It even describes itself as a DSL rather than a framework, so expect the lightweight and all the pros and cons that come with it. Still, Rubygems remains an advantage for Sinatra, and so a</p>
+
+<h3 id="django">Django</h3>
+
+<p>But what if you like the sound of Rails, but are a Python expert not looking to pick up a new language? <a href="Django">https://www.djangoproject.com/</a> may be a worthwhile option. Django boasts similar community engagement and a Python-appropriate “batteries included” philosophy. That is, with this framework there is expected to be similarly quick setup to Ruby on Rails, since a full suite of tools is included, and many choices are defaulted to speed up development.</p>
+
+:ET

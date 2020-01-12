@@ -1,8 +1,8 @@
 ---
 layout: post
-title:      "Ruby on Rails Basics"
+title:      "Ruby on Rails Basics - Part One"
 date:      2020-01-05 18:58:28 +00:00 
-permalink: ruby_on_rails_intro
+permalink: ruby_on_rails_intro_part_one
 ---
 
 
@@ -16,7 +16,7 @@ Let's break that down.
 
 ### Ruby
 
-[https://www.ruby-lang.org](Ruby) is a high-level object-oriented programming language developed by Yukihiro "Matz" Matsumodo. Matz developed it in order to create a language that he himself would enjoy programming in, and accordingly one of its hallmarks is the attempt to follow the "Principle of Least Astonishment". This principle dictates that, in a programming language, the method by which any given action is taking should cause as little surprise or astonishment in the user as possible. A good example of this paradigm is a contrast between the interactive consoles of Ruby and Python, another high-level language which is often compared with Ruby:
+[Ruby](https://www.ruby-lang.org) is a high-level object-oriented programming language developed by Yukihiro "Matz" Matsumodo. Matz developed it in order to create a language that he himself would enjoy programming in, and accordingly one of its hallmarks is the attempt to follow the "Principle of Least Astonishment". This principle dictates that, in a programming language, the method by which any given action is taking should cause as little surprise or astonishment in the user as possible. A good example of this paradigm is a contrast between the interactive consoles of Ruby and Python, another high-level language which is often compared with Ruby:
 
 ```
 $ irb
@@ -40,3 +40,5 @@ A Server-Side framework is contrasted with Client-Side, and each describes where
 Model-View-Controller is a web application programming paradigm that separates code concerns into the three named parts. Code in the Model handles server-side business logic, code in the View is responsible for directly creating web pages, and code in the Controller translates user interactions to the Model and the View. This is often better understood through a food service metaphor:
 The Controller is like a waiter. A customer enters the restaurant (website) and the waiter directs them to a table (the View), which initially just has a menu (the homepage). The customer selects a meal (clicks on an internal link), and the waiter asks the chef to make the food (the Controller channels user input to the Model's business logic), then brings the completed meal back to the table (displays the results to the user).
 This paradigm is, in general, arbitrary and it is up to the designer to make use of it as appropriate to the project. Rails in particular does make it easy to use the paradigm, though, by creating different kinds of files and interactions by default. The easiest way to code a website in Rails without changing these defaults is to use an MVC paradigm.
+
+*For pros and cons of using Ruby on Rails, see the [next entry](www.paulashour.com/ruby_on_rails_intro_part_two)
